@@ -4,9 +4,17 @@ public class Radio {
 
     private int currentChannel = 0;
     private int currentVolume = 0;
+    private int amountChannels = 10;
+
+    public Radio(int amountChannels) {
+        this.amountChannels = amountChannels;
+    }
+
+    public Radio() {
+    }
 
     public void setCurrentChannel(int newCurrentChannel) {
-        if (newCurrentChannel > 9) {
+        if (newCurrentChannel >= amountChannels) {
             return;
         }
         if (newCurrentChannel < 0) {
@@ -26,7 +34,6 @@ public class Radio {
     }
 
 
-
     public int getCurrentChannel() {
         return currentChannel;
     }
@@ -37,7 +44,7 @@ public class Radio {
 
     public void next() {
         currentChannel++;
-        if (currentChannel > 9) {
+        if (currentChannel >= amountChannels) {
             currentChannel = 0;
         }
     }
@@ -45,7 +52,7 @@ public class Radio {
     public void prev() {
         currentChannel--;
         if (currentChannel < 0) {
-            currentChannel = 9;
+            currentChannel = amountChannels - 1;
         }
     }
 
